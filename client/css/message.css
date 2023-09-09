@@ -61,5 +61,6 @@
 	.message .content code {
 		font-size: 0.875rem;
 		line-height: 1.3;
+		color: var(--colour-3);
 	}
 }

@@ -56,3 +56,6 @@ class Website:
     
     def get_languages(self):  
         return get_languages()
+    
+    def get_lang(self):
+        pass

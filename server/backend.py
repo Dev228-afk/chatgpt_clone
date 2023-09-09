@@ -4,7 +4,24 @@ from g4f import ChatCompletion
 from flask import request, Response, stream_with_context
 from requests import get
 from server.config import special_instructions
+from translate import Translator
 
+def number_of_numerics(text):
+     # Initializing count
+    d={'letters': 0, 'numbers': 0, 'other': 0}
+    for t in text:
+        if t.isalpha():
+            d['letters'] += 1
+        elif t.isdigit():
+            d['numbers'] += 1
+        else:
+            d['other'] += 1 # this will include spaces
+    if d['other'] >5 or d['letters'] >5:      
+        return True
+    else: 
+        return False
+
+    
 
 class Backend_Api:
     def __init__(self, bp, config: dict) -> None:
@@ -40,8 +57,21 @@ class Backend_Api:
                 chatId=conversation_id,
                 messages=messages
             )
-
-            return Response(stream_with_context(generate_stream(response, jailbreak)), mimetype='text/event-stream')
+            
+            err_strings= ['QUERY LENGTH LIMIT EXCEEDED.', 'MAX ALLOWED QUERY : 500 CHARS','QUERY LENGTH LIMIT EXCEEDED. MAX ALLOWED QUERY : 500 CHARS']
+            
+            for i in err_strings:
+                if i in response:
+                    response= response.replace(i, '', regex=False)
+            print(response)
+            # if number_of_numerics(response) == True:
+            #     pass
+            # else:
+            # translator= Translator(from_lang='en', to_lang='gu-IN')
+            # response= translator.translate(response)    
+                
+            
+            return Response(stream_with_context(generate_stream(response  , jailbreak)), mimetype='text/event-stream')
 
         except Exception as e:
             print(e)

@@ -1,9 +1,10 @@
 .main-container {
 	display: flex;
-	padding: var(--section-gap);
+	padding: 5px;
 	height: 100vh;
 	justify-content: center;
 	box-sizing: border-box;
+	padding-top: 16px;
 }
 
 @media screen and (max-width: 360px) {

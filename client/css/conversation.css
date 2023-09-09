@@ -12,6 +12,11 @@
 	overflow: auto;
 	overflow-wrap: break-word;
 	padding-bottom: 8px;
+	background-color: var(--colour-7);
+	border-radius: 12px;
+	border-width: 0.1px;
+	border-color: #bac6de;
+	color: var(--colour-3);
 }
 
 .conversation .user-input {
@@ -44,7 +49,7 @@
 	background: none;
 	border: none;
 	outline: none;
-	color: var(--colour-3);
+	color: var(--colour-2);
 	resize: vertical;
 	max-height: 150px;
 	min-height: 80px;
@@ -57,14 +62,20 @@
 	height: 100%;
 	width: 100%;
 	border-radius: var(--border-radius-1);
-	border: 1px solid var(--blur-border);
+	border: 2.1px solid var(--blur-border);
+	background-color: var(--colour-8);
 }
 
 .box.input-box {
 	position: relative;
 	align-items: center;
-	padding: 8px;
 	cursor: pointer;
+	border-color: var(--border-1);
+	border-width: 0.01rem;
+	border-radius: 15px;
+	background-color: var(
+	--colour-6);
+	text-align: center;
 }
 
 #send-button {
@@ -73,6 +84,7 @@
 	right: 10px;
 	z-index: 1;
 	padding: 16px;
+	color: var(--user-input);
 }
 
 #cursor {
@@ -140,7 +152,7 @@
 	}
 
 	.conversation .user-input textarea {
-		font-size: 0.875rem;
+		font-size: 1.1rem;
 	}
 }
 
@@ -156,3 +168,5 @@
 		margin: 2px 0 8px 0;
 	}
 }
+
+
